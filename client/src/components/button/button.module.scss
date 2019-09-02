@@ -1,0 +1,89 @@
+@import '../../css/variables';
+
+$warning : map-get($colors, warning);
+$success : map-get($colors, success);
+
+.basic{
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 15px 5px;
+    border-radius:5px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.primary{    
+    border: 2px solid;
+    &.success {
+        color: white;
+        background-color: $success;
+        border-color: $success;    
+        &:hover{
+            background-color: darken($success,5%);
+            border-color: darken($success,10%);
+        }
+        &:active{
+            background-color: darken($success,20%);
+            border-color: darken($success,20%);
+        }
+    }
+    &.alert {
+        color: white;
+        background-color: $warning;
+        border-color: $warning;    
+        &:hover{
+            background-color: darken($warning,5%);
+            border-color: darken($warning,10%);
+        }
+        &:active{
+            background-color: darken($warning,20%);
+            border-color: darken($warning,20%);
+        }
+    }
+}
+
+.secondary {
+    border: 2px solid;
+    &.alert {
+        color: $warning;
+        background-color: rgba($warning,0);
+        border-color: $warning;
+        &:hover{
+            background-color: $warning;
+            color: white;
+        }
+        &:active{
+            background-color: darken($warning,20%);
+        }
+    }
+    &.success {
+        color: $success;
+        background-color: rgba($success,0);
+        border-color: $success;
+        
+        &:hover{
+            background-color: $success;
+            color: white;
+        }
+        &:active{
+            background-color: darken($success,20%);
+        }
+    }
+}
+
+.tertiary{
+    border:none;
+    background-color: rgba(255,255,255,0.5);
+    color: rgba(0,0,0,0.6);
+    &:hover{
+        text-decoration: underline;
+    }
+
+}
+
+.block{
+    width: 100%;
+}
+

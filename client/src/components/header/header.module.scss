@@ -1,0 +1,44 @@
+// @import REACT_APP_CSS'/variables';
+@import '../../css/variables';
+
+
+
+.header {
+    background-color: map-get($colors, black);
+    height: auto;
+    @media screen and(min-width: $breakpoint-med) {
+        height: auto;
+        max-height: 5em;
+    }
+    nav {
+        margin:0;
+        list-style: none;
+        li{
+            display: inline-block;
+            a{
+                text-decoration: none;
+                color: white;
+                text-transform: uppercase;
+                font-size: 1,2em;
+                padding:10px 20px;
+                
+                &:hover{
+                    background-color: rgba(0,0,0,0.3);
+                }
+            }
+
+        }
+    }
+}
+
+.logo{
+    width:40%;
+    max-width:40%;
+    padding: 5%;
+    
+    @media screen and(min-width: $breakpoint-med) {
+        padding: 1%;
+        width:15%;
+        max-width:15%;
+    }
+}

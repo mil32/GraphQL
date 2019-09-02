@@ -1,0 +1,24 @@
+// $colors:( 
+//    primary: #FF1E42,
+//   secondary: #CCD1D1,
+//   black: #003943,
+//   success: #00AC8B,
+//   alert: #F1B321
+//   );
+@import 'variables';
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.red{
+  color: map-get($colors, primary);
+}
+
+.big{
+  font-size: 4em;
+}

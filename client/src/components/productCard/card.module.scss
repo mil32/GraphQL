@@ -1,0 +1,27 @@
+@import '../../css/variables';
+
+.card {
+    background-color: lightgray;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius:5px;
+    width: 100%;
+}
+
+.image {
+    height: 150px;
+    background-image: url('./default.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+.data {
+    padding: 20px;
+    h2{
+        margin-top:0px;
+    }
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.5rem;
+}

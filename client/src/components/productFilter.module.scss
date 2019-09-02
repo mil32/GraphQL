@@ -1,0 +1,22 @@
+.element{
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    margin-left: 0px;
+    border: 1px solid black;
+    border-radius: 3px;
+    opacity: 0.3;
+    line-height:1.5em;
+    &:hover{
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+
+.cant{
+    font-size: 0.3em;
+}
+
+.active {
+    opacity:1;
+}
