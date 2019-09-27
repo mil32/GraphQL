@@ -2,21 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const ExpressGraphQL = require("express-graphql");
-const {
-  GraphQLID,
-  GraphQLString,
-  GraphQLList,
-  GraphQLNonNull,
-  GraphQLInt,
-  GraphQLObjectType,
-  GraphQLSchema,
-  buildSchema
-} = require("graphql");
+const { buildSchema } = require("graphql");
 const db = require('./db/dbHelper');
 const app = express();
 const port = process.env.PORT || 5000;
 
-const {pizzaSchema} = require('./db/models/pizza');
+const { pizzaSchema } = require('./db/models/pizza');
 
 
 ////// DB STUFF ///
@@ -68,7 +59,7 @@ app.use("/graphql", ExpressGraphQL({
         .then(pizzas => {
           return pizzas.map(pizza => {
             console.log(pizza);
-            return  {...pizza._doc} ;
+            return { ...pizza._doc };
           });
         }).catch(err => {
           console.log(err);
@@ -95,8 +86,6 @@ app.use("/graphql", ExpressGraphQL({
   },
   graphiql: true
 }));
-
-///////
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
