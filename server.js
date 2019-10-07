@@ -48,7 +48,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.post('/api/pizza', db.addPizza);
-app.get('/api/pizzas', db.getPizzas);
+//app.get('/api/pizzas', db.getPizzas);
 
 
 // app.delete('/api/pizza', async (req,res) =>{

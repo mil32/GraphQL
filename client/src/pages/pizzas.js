@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import {container } from '../css/layout.module.scss';
-import axios from 'axios';
+//import axios from 'axios';
+import ApolloClient from "apollo-boost";
+import { gql } from "apollo-boost";
 
 import PizzaGrid from '../components/pizzaGrid';
 import CreateForm from '../components/forms/createForm';
+
+const client = new ApolloClient({uri:'http://localhost:5000/graphql'});
 
 export default class pizza extends Component {
     constructor(props) {
@@ -31,13 +35,24 @@ export default class pizza extends Component {
 
     setProducts = async () => {
         try {
-            const res = await axios.get('/api/pizzas')
+            const res = await client.query({
+                                query: gql`
+                                    {
+                                        pizzas {
+                                        name,
+                                        ingredients,
+                                        description,
+                                        price
+                                        }
+                                    }
+                                    `
+                        });            
             this.setState({
                 loading: false,
-                products: res.data
+                products: res.data.pizzas
             })  
         } catch (error) {
-            console.log("ERROR CACHETADO");
+            console.error("ERROR CACHETADO >", error );
             this.setState({ 
                 loading: false,
                 error: "can't get products"

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
+
+import ApolloClient from "apollo-boost";
+// import { Mutation } from "react-apollo";
+import { gql } from "apollo-boost";
 
 import Alert from '../alert';
 import Input from './elements/input/'
+
+const client = new ApolloClient({uri:'http://localhost:5000/graphql'});
+
 
 class createForm extends Component {
     constructor(props) {
@@ -41,19 +48,27 @@ class createForm extends Component {
     }
     
 
-    handleSubmit = event => {
+    handleSubmit = async (event) => {
         event.preventDefault();
         
         const { product } = this.state;
         // transforma string en array
         product.ingredients = product.ingredients.split(',').map(st => st.trim()).filter(st => st!=="");
 
-        axios.post(`/api/pizza`,  product )
-          .then(res => {
-            console.log(res.data);
-            this.clearProduct();
-            this.props.refresh();
-          })
+        const res = await client.mutate({
+            mutation: gql`
+                {
+                pizza(name: "${product.name}", 
+                  ingredients:${product.ingredients}, 
+                  description: "${product.description}",
+                    price: ${product.price}) 
+              }
+                `
+            }).catch(err => console.error(err));            
+
+        console.log(res.data);
+        this.clearProduct();
+        this.props.refresh();
     }
 
 
