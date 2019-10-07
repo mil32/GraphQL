@@ -15,18 +15,18 @@ exports.connect = ()=> {
     
 }
 
-exports.addPizza = async (req,res)=> {
-    let {name, ingredients, description, price} = req.body;
+exports.addPizza = async (args)=> {
+    let {name, ingredients, description, price} = args;
     let pizza= new Pizza({
         name, ingredients, description, price
     })
     let savedPizza = await pizza.save();
-    res.status(200).json(savedPizza);
+    return savedPizza;
 }
 
-exports.getPizzas = async (req,res) => {
+exports.getPizzas = async () => {
     let pizzas = await Pizza.find();
-    res.json(pizzas);
+    return pizzas;
 }
 
 //TODO
